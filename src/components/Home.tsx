@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStateStore } from 'src/store/state-store';
-import styles from '../styles/home.module.css';
+import styles from '../styles/login.module.css';
 
 function Home({ pageData }: HomeProps) {
   const [count] = useStateStore('CART', 0);

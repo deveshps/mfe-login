@@ -1,6 +1,10 @@
 import { StringIndexable } from "../model/common.model";
 
 export const routesBase: StringIndexable<RouteItemBase> = {
+  login :{
+    path:"/",
+    dataSource:undefined
+  },
   home: {
     path: '/',
     dataSource: 'https://jsonplaceholder.typicode.com/todos/1',

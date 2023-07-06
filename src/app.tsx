@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { routesList } from './routes/routes';
 import { fetchPageData } from "./shared/utils";
 import { getGenericReqFromLocation } from "./shared/utils-client";
+import NotFound from "./components/NotFound";
 
 function App({ pageData: staticPageData }: AppProps) {
   const [pageData, setPageData] = useState(staticPageData || null);
@@ -30,7 +31,7 @@ function App({ pageData: staticPageData }: AppProps) {
   }, [staticPageData, location.pathname]);
 
   return (
-    <ErrorBoundary fallback={<span>Error!</span>}>
+    <ErrorBoundary fallback={routesList.find((e:any) => e.path === location?.pathname) ? <span>Error!</span> : <NotFound />}>
       <Routes>
         {routesList.map((route) => (
           <Route

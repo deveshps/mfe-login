@@ -145,6 +145,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,       // (1)
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: {
