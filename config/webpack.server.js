@@ -90,6 +90,10 @@ module.exports = {
         test: /\.module\.s?css$/,
         use: [...getStyleLoaders(true, true)],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,       // (1)
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: {
