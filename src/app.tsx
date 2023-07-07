@@ -5,6 +5,7 @@ import { routesList } from './routes/routes';
 import { fetchPageData } from "./shared/utils";
 import { getGenericReqFromLocation } from "./shared/utils-client";
 import NotFound from "./components/NotFound";
+import Toast from "./common/modals/toast";
 
 function App({ pageData: staticPageData }: AppProps) {
   const [pageData, setPageData] = useState(staticPageData || null);
@@ -41,6 +42,7 @@ function App({ pageData: staticPageData }: AppProps) {
           />
         ))}
       </Routes>
+      <Toast />
     </ErrorBoundary>
   );
 }

@@ -3,7 +3,7 @@ import TcgLogo from "../images/logo.a0185b04.svg";
 import { useNavigate } from "react-router-dom";
 import {useStateStore} from "src/store/state-store";
 import styles from "../styles/login.module.css";
-// import { fetchAPIData } from '../../common/apiRequest';
+import { fetchAPIData } from '../common/apiRequest';
 
 const Login = ({ pageData }: HomeProps) => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Login = ({ pageData }: HomeProps) => {
     let apiUrl = "/api/v1/otp/send";
     if (emailOrPhonNumber.length > 5) {
       try {
-        // const apiData = await fetchAPIData(apiUrl,'POST', {"emailOrPhoneNumber" : emailOrPhonNumber}, null,true)
+        const apiData = await fetchAPIData(apiUrl,'POST', {"emailOrPhoneNumber" : emailOrPhonNumber}, null,true)
         setSendOtp(true);
       } catch (error) {
         setSendOtp(false);
@@ -59,14 +59,14 @@ const Login = ({ pageData }: HomeProps) => {
     let apiUrl = "/api/v1/otp/verify";
     if (otpNumber.length > 1) {
       try {
-        // const apiData = await fetchAPIData(apiUrl,'POST',{"emailOrPhoneNumber":emailOrPhonNumber,"otpCode":otpNumber}, null,true)
-        //     let result = apiData;
-        //     let accessTokenExpiry = Date.now() + result['expires_in'] * 1000;
-        //     localStorage.setItem('access_token', result['access_token']);
-        //     localStorage.setItem("refresh_token", result['refresh_token']);
-        //     localStorage.setItem("access_token_expiry", accessTokenExpiry);
-        //     navigate('/dashboard'); 
-          setIsLoggedIn(true) // we can set a stateStorvariable like isloggedin:true and then redirect from host mfe if possible
+            const apiData = await fetchAPIData(apiUrl,'POST',{"emailOrPhoneNumber":emailOrPhonNumber,"otpCode":otpNumber}, null,true)
+            let result = apiData?.data;
+            let accessTokenExpiry = Date.now() + result['expires_in'] * 1000;
+            localStorage.setItem('access_token', result['access_token']);
+            localStorage.setItem("refresh_token", result['refresh_token']);
+            localStorage.setItem("access_token_expiry", accessTokenExpiry.toString());
+            // navigate('/dashboard'); 
+            setIsLoggedIn(true) // we can set a stateStorvariable like isloggedin:true and then redirect from host mfe if possible
         
       } catch (error) {
         console.error("Error fetching data:", error);
