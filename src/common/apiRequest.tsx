@@ -5,7 +5,6 @@ import { API_URL, MOCK_API_URL , LOGIN_API_URL, authRefreshURL} from './constant
 
 const fetchAPIData = async (endpointURL:string, type:string, params?:any, abortController:any = null, isWithoutAuth = false ) => {
     // const navigate = useNavigate()
-    console.log("??>> ",endpointURL,type,params,abortController,isWithoutAuth)
     let LMS_API_URL = isWithoutAuth ? LOGIN_API_URL : API_URL
   const actualAPIURL = `${LMS_API_URL}${endpointURL}`;
 

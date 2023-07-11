@@ -26,7 +26,7 @@ const Login = ({ pageData }: HomeProps) => {
   //     }
   // }
   const sendOtp = async () => {
-    let apiUrl = "/api/v1/otp/send";
+    let apiUrl = "/auth/api/v1/otp/send";
     if (emailOrPhonNumber.length > 5) {
       try {
         const apiData = await fetchAPIData(apiUrl,'POST', {"emailOrPhoneNumber" : emailOrPhonNumber}, null,true)
