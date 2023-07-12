@@ -11,7 +11,7 @@ const { getStyleLoaders } = require("./common.config");
 const isProd = isProdFunc();
 
 const federationConfig = {
-  name: process.env.MFE_NAME || "remote",
+  name: process.env.MFE_NAME || "login_mfe",
   library: { type: "commonjs-module" },
   isServer: true,
   filename: "remoteEntry.js",
@@ -50,7 +50,7 @@ const federationConfig = {
 const plugins = [
   new EnvironmentPlugin({
     // NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
-    MFE_NAME: 'remote',
+    MFE_NAME: 'login_mfe',
     PROD_MODE: 'false',
     DEV_SERVER: 'false',
   }),
